@@ -1,0 +1,35 @@
+          >
+          {% set responses = [
+          "OK",
+          "Sure",
+          "If you insist",
+          "Done",
+          "Pervert",
+          "Right away sir",
+          "Of course Jamie",
+          "Just one night i would like to be left alone",
+          "I aint got time for that",
+          "Woof, Thats the noise that dogs make",
+          "Moooo, Thats what a duck says",
+          "No worries",
+          "I just cant right now, I can't even",
+          "I can do that",
+          "Leave it to me",
+          "Consider it done",
+          "yes yes yes yes yes, ooo i meant nope",
+          "As you wish",
+          "By your command",
+          "Affirmative",
+          "ohh, fuck you",
+          "shit, sorry was asleep, yeah i'll get it now",
+          "yes boss",
+          "Nope",
+          "Aye, Wont be a problem",
+          "Well i guess so",
+          "Fucks Sake, fine",
+          "are you shitting me",
+          "Fuck You",
+          "No Problem"
+          ] %}
+          {% set rindex =  (range(0, (responses | length - 1) )|random) -%}
+          {{responses[rindex]}} 

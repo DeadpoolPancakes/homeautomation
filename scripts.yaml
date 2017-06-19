@@ -1,0 +1,654 @@
+  fanon:
+   alias: fan on
+   sequence:
+    - alias: fan on
+      service: shell_command.fanon
+
+  dashboard:
+   alias: dashboard
+   sequence:
+    - alias: dashboard
+      service: shell_command.hadashboard
+
+  hapush:
+   alias: hapush
+   sequence:
+    - alias: hapush
+      service: shell_command.hapush
+
+  fanoff:
+   alias: fan off
+   sequence:
+    - alias: fan off
+      service: shell_command.fanoff
+
+  microon:
+   alias: micro on
+   sequence:
+    - alias: micro on
+      service: shell_command.microon
+
+  microoff:
+   alias: micro off
+   sequence:
+    - alias: micro off
+      service: shell_command.microoff      
+
+  bedon:
+   alias: bed on
+   sequence:
+    - alias: bed on
+      service: shell_command.bedlightson
+
+  bedoff:
+   alias: bed off
+   sequence:
+    - alias: bed off
+      service: shell_command.bedlightsoff                    
+            
+  fireplace:
+   alias: fireplace
+   sequence:
+    - alias: fireplace
+      service: media_player.play_media
+      data:
+       entity_id: media_player.lounge
+       media_content_id: "localhost/media/Fireplace.mp4"
+       media_content_type: "video/mp4"
+    - alias: tv on
+      service: switch.turn_on
+      data:
+       entity_id: switch.tv           
+
+  offerman:
+   alias: offerman
+   sequence:
+    - alias: offerman
+      service: media_player.play_media
+      data:
+       entity_id: media_player.lounge
+       media_content_id: "https://www.youtube.com/watch?v=_StgHl92v5Q"
+       media_content_type: "video/mp4"
+
+  rain:
+   alias: rain
+   sequence:
+    - alias: rain
+      service: media_player.play_media
+      data:
+       entity_id: media_player.bedroom
+       media_content_id: localhost/media/Sounds/rain.mp3
+       media_content_type: Audio
+
+  clearday:
+   alias: clearday
+   sequence:
+    - alias: clearday
+      service: media_player.play_media
+      data:
+       entity_id: media_player.bedroom
+       media_content_id: localhost/media/Sounds/Chirping.mp3
+       media_content_type: Audio
+
+  thunderstorm:
+   alias: thunderstorm
+   sequence:
+    - alias: thunderstorm
+      service: media_player.play_media
+      data:
+       entity_id: media_player.bedroom
+       media_content_id: localhost/media/Sounds/thunderstorm.mp3
+       media_content_type: Audio
+
+  beach:
+   alias: beach
+   sequence:
+    - alias: beach
+      service: media_player.play_media
+      data:
+       entity_id: media_player.bedroom
+       media_content_id: localhost/media/Sounds/beach.mp3
+       media_content_type: Audio
+       
+  nighttime:
+   alias: Nighttime
+   sequence:
+    - alias: Nighttime
+      service: media_player.play_media
+      data:
+       entity_id: media_player.bedroom
+       media_content_id: localhost/media/Sounds/Nighttime.mp3
+       media_content_type: Audio
+
+  taytay:
+   alias: taytay
+   sequence:
+    - alias: taytay
+      service: media_player.play_media
+      data:
+       entity_id: media_player.lounge
+       media_content_id: localhost/media/Sounds/taylorswiftok.gif
+       media_content_type: VIDEO
+
+  cosy:
+   alias: cosy
+   sequence:
+    - alias: Fireplace on
+      service: media_player.play_media
+      data:
+       entity_id: media_player.lounge
+       media_content_id: localhost/media/Fireplace.mp4
+       media_content_type: "video/mp4"
+    - alias: tv on
+      service: switch.turn_on
+      data:
+       entity_id: switch.tv
+    - alias: candles on
+      service: switch.turn_on
+      data:
+       entity_id: switch.candles
+    - alias: dim lights
+      service: lights.turn_on
+      data:
+       entity_id: group.lights
+       brightness: 40
+       transition: 10       
+
+  reboot:
+   alias: reboot
+   sequence:
+    - alias: reboot
+      service: shell_command.reboot
+
+  restarthass:
+   alias: restart hass
+   sequence:
+    - alias: restart hass
+      service: shell_command.restarthass              
+
+  update:
+   alias: update
+   sequence:
+    - alias: update
+      service: shell_command.update
+
+  backuppi:
+   alias: backup pi
+   sequence:
+    - alias: backup pi
+      service: shell_command.backuppi
+
+  updatepi:
+   alias: update pi
+   sequence:
+    - alias: update pi
+      service: shell_command.updatepi
+
+  kodi_notification:
+   alias: kodi test
+   sequence:
+    - alias: kodi test
+      service: notify.kodi
+      data:
+       title: "Home Assistant"
+       message: "Message to KODI from Home Assistant!"
+       data:
+         displaytime: 2000
+         icon: "warning"
+
+  case_lights:
+   alias: case lights
+   sequence:
+    - alias: case lights
+      service: shell_command.caselightson
+
+  case_lights_off:
+   alias: case lights off
+   sequence:
+    - alias: case lights off
+      service: shell_command.caselightsoff      
+
+  wakeup:
+   alias: lights on in morning
+   sequence:
+    - alias: trun on lights
+      service: scene.turn_on
+      data:
+       entity_id: scene.wakeup
+    - delay:
+        minutes: 1   
+    - alias: call script
+      service: scene.turn_on
+      data:
+       entity_id: scene.morning
+
+  flash:
+   alias: flash
+   sequence:
+    - alias: light off
+      service: light.turn_off
+      data:
+       entity_id: group.lights
+    - delay:
+        seconds: 1
+    - alias: light on
+      service: light.turn_on
+      data:
+       entity_id: group.lights
+
+
+  warpdrive:
+   alias: warpdrive
+   sequence:
+    - alias: warpdrive
+      service: media_player.play_media
+      data:
+       entity_id: media_player.bedroom
+       media_content_type: Audio 
+       media_content_id: localhost/media/Sounds/battlestargalactica.mp3
+
+  learnfrench:
+   alias: learn french
+   sequence:
+    - alias: learn french
+      service: media_player.play_media
+      data_template:
+       entity_id: media_player.bedroom
+       media_content_type: audio/mp3 
+       media_content_id: localhost/media/Sounds/media/french/LearnFrench.mp3
+
+  ambience:
+   alias: ambience
+   sequence:
+    - alias: ambience
+      service: media_player.play_media
+      data_template:
+       entity_id: media_player.bedroom
+       media_content_type: Audio 
+       media_content_id: >
+         {% if is_state('sensor.dark_sky_icon', 'rain') %}
+           localhost/media/Sounds/rain.mp3
+         {% elif is_state('sensor.dark_sky_icon', 'thunderstorm') %}
+           localhost/media/Sounds/thunderstorm.mp3  
+         {% else %}
+           localhost/media/Sounds/Chirping.mp3
+         {% endif %}
+
+  brightenlights:
+   alias: brighten lights
+   sequence:
+    - service: light.turn_on
+      data_template:
+       entity_id: group.lights
+       brightness: "{{ states.light.lightbulb_01.attributes.brightness |float + (states.light.lightbulb_01.attributes.brightness / 10 * 4)}}"
+
+  dimlights:
+   alias: dim lights
+   sequence:
+    - service: light.turn_on
+      data_template:
+       entity_id: group.lights
+       brightness: "{{ states.light.lightbulb_01.attributes.brightness |float - (states.light.lightbulb_01.attributes.brightness / 10 * 4)}}"     
+
+  kodipause:
+   alias: kodi pause
+   sequence: 
+    - service: media_player.media_pause
+      data:
+        entity_id: media_player.natasha
+
+  kodiplay:
+   alias: kodi play
+   sequence: 
+    - service: media_player.media_play
+      data:
+        entity_id: media_player.natasha        
+
+  notifyhome:
+   alias: Welcome Home
+   sequence:
+    - service: notify.html5_sif
+      data:
+       title: "Jarvis"
+       message: "Welcome Home Sir"
+       data:
+         icon: "localhost/local/supergirl.jpg"  
+         actions:
+           - action: "lights_on"
+             title: "Lights On"          
+           - action: "Fireplace"
+             title: "Fireplace"
+
+
+  notifywork:
+   alias: Enjoy Work
+   sequence:
+    - service: notify.html5_sif
+      data:
+       title: "Jarvis"
+       message: "Have a good day Sir"
+       data:
+         icon: "localhost/local/supergirl.jpg"
+
+  startup:
+   alias: Startup
+   sequence:
+    - service: notify.html5_sif
+      data:
+       title: "Jarvis"
+       message: "Up and running sir"
+       data:
+         icon: "localhost/local/jarvis.png"
+         vibrate:
+           - 400
+           - 200
+           - 400
+           - 200
+           - 400
+    - service: switch.turn_on
+      entity_id: switch.case_lights 
+    - service: script.turn_on
+      entity_id: script.dashboard
+    - service: script.turn_on
+      entity_id: script.hapush       
+
+  heavycpuuse:
+   alias: Heavy cpu use
+   sequence:
+    - service: notify.html5_sif
+      data:
+       title: "Jarvis"
+       message: "Cpu use is currently high sir"
+       data:
+         icon: "localhost/local/jarvis.jpg"
+
+  findmyphone:
+   alias: findmyphone
+   sequence:
+    - service: notify.html5_sif
+      data:
+       title: "Sif"
+       message: "I'm Over Here"
+       data:
+         icon: "localhost/local/SifIcon.png"
+
+  updateavailable:
+   alias: Update Available
+   sequence:
+    - service: notify.html5_sif
+      data:
+       title: "Jarvis"
+       message: "Sir an update appears to be ready, Version {{ states.updater.updater.state }}"
+       data:
+         icon: "localhost/local/jarvis.png"
+         actions:
+           - action: "Update"
+             title: "Update Now"
+
+  greeting:
+   alias: Jarvis Greeting
+   sequence:
+    - service: notify.homehub
+      data:
+       message: "Hello from Home Assistant"
+
+  warningshot:
+   alias: Warning Shot
+   sequence:
+    - service: notify.homehub
+      data:
+       message: "Please Leave Immediately"
+    - delay:
+       seconds: 30
+    - service: shell_command.turn_on
+      data:
+       entity_id: shell_command.warningshot     
+     
+  startupgreeting:
+   alias: startup greeting
+   sequence:
+    - service: notify.homehub
+      data:
+       message: "Jarvis is up and running again sir"
+
+  sifbatterylow:
+   alias: Sif Battery Low
+   sequence:
+    - service: notify.html5
+      data:
+       title: Sif
+       message: "I could do with a charge"             
+       data:
+         icon: "localhost/local/SifIcon.png"
+
+  shieldbatterylow:
+   alias: Shield Battery Low
+   sequence:
+    - service: notify.html5
+      data:
+       title: Shield
+       message: "I could do with a charge"             
+       data:
+         icon: "localhost/local/SifIcon.png"
+
+  n7batterylow:
+   alias: N7 Battery Low
+   sequence:
+    - service: notify.html5
+      data:
+       title: N7
+       message: "I could do with a charge"             
+       data:
+         icon: "localhost/local/SifIcon.png"
+
+  homehubbatterylow:
+   alias: HomeHub Battery Low
+   sequence:
+    - service: notify.html5
+      data:
+       title: HomeHub
+       message: "I could do with a charge"             
+       data:
+         icon: "localhost/local/SifIcon.png"
+
+
+  iss:
+   alias: Iss Visible
+   sequence:
+    - service: notify.html5_sif
+      data:
+       title: "Iss"
+       message: "Now Visble"
+       data:
+         icon: "localhost/local/supergirl.jpg"         
+
+
+  motionone:
+   alias: Motion Camera 1
+   sequence:
+    - service: notify.html5_sif
+      data:
+       title: "Jarvis"
+       message: "Motion Detected"
+       data:
+         icon: "localhost/local/supergirl.jpg"
+           
+
+
+  motiontwo:
+   alias: Motion Camera 2
+   sequence:
+    - service: notify.html5_sif
+      data:
+       title: "Jarvis"
+       message: "Motion Detected"
+       data:
+         icon: "localhost/local/supergirl.jpg"
+           
+         actions:
+           - action: "warningshot"
+             title: "Warning Shot"
+           - action: "burstfire"
+             title: "Burst" 
+
+  motionthree:
+   alias: Motion Camera 3
+   sequence:
+    - service: notify.html5_sif
+      data:
+       title: "Jarvis"
+       message: "Motion Detected"
+       data:
+         icon: "localhost/local/supergirl.jpg"
+         url: "localhost:8765/picture/3/current/"                           
+
+
+  shoppinglist:
+   alias: Shopping List
+   sequence:
+    - service: notify.html5_sif
+      data:
+       title: "Jarvis"
+       message: "Your shopping list sir"
+       data:
+         icon: "localhost/local/jarvis.png"
+         
+         vibrate:
+         - 300
+         - 200
+         - 300
+         
+  lunchtimelist:
+   alias: Lunch time List
+   sequence:
+    - service: notify.html5_sif
+      data:
+       title: "Jarvis"
+       message: "Dont forget these sir"
+       data:
+         icon: "localhost/local/jarvis.png"
+         
+         vibrate:
+         - 300
+         - 200
+         - 300                   
+
+  3dprinterstart:
+   alias: 3d Printer start
+   sequence:
+    - service: switch.turn_on
+      data:
+       entity_id: switch.3dprinterlights
+    - service: notify.html5_sif
+      data:
+       title: "Jarvis"
+       icon: "localhost/local/jarvis.png"
+       message: "Print Started"   
+    - delay:
+       seconds: 5
+    - service: switch.turn_on
+      data:
+       entity_id: switch.3d_printer_red        
+    - delay:
+       minutes: 2
+    - service: switch.turn_on
+      data:
+       entity_id: switch.3d_printer_white 
+
+  3dprinterend:
+   alias: 3d Printer end
+   sequence:
+    - service: switch.turn_on
+      data:
+       entity_id: switch.3d_printer_green
+    - delay:
+       seconds: 5       
+    - service: notify.html5_sif
+      data:
+       title: "Jarvis"
+       icon: "localhost/local/jarvis.png"
+       message: "Print Finished"       
+    - delay:
+       minutes: 5
+    - service: switch.turn_off
+      data:
+       entity_id: switch.3dprinterlights        
+
+  3dprinterfifty:
+   alias: 3d Printer Halfway
+   sequence:
+    - service: switch.turn_on
+      data:
+       entity_id: switch.3d_printer_blue
+    - service: notify.html5_sif
+      data:
+       title: "Jarvis"
+       icon: "localhost/local/jarvis.png"
+       message: "Print at 50%"       
+    - delay:
+       minutes: 1
+    - service: switch.turn_on
+      data:
+       entity_id: switch.3d_printer_white        
+
+  playstation3:
+   alias: playstation 3
+   sequence:
+    - service: switch.turn_on
+      data:
+       entity_id: switch.input_playstation
+    - delay:
+       seconds: 1       
+    - service: switch.turn_on
+      data:
+       entity_id: switch.tv        
+
+  chromecast:
+   alias: chromecast
+   sequence:
+    - service: switch.turn_on
+      data:
+       entity_id: switch.input_chromecast
+    - delay:
+       seconds: 1       
+    - service: switch.turn_on
+      data:
+       entity_id: switch.tv        
+
+  firetv:
+   alias: fire tv
+   sequence:
+    - service: switch.turn_on
+      data:
+       entity_id: switch.input_fire_tv
+    - delay:
+       seconds: 1       
+    - service: switch.turn_on
+      data:
+       entity_id: switch.tv        
+
+  crazyex:
+   alias: crazy ex
+   sequence:
+    - service: lights.turn_off
+      data:
+       entity_id: group.all_lights
+    - service: switch.turn_off
+      data:
+       entity_id: switch.tv
+    - service: notify.homehub
+      data:
+       message: "Please Leave Immediately, You are Mental"   
+
+  xbox:
+   alias: xbox
+   sequence:
+    - service: switch.turn_on
+      data:
+       entity_id: switch.input_xbox
+    - delay:
+       seconds: 1       
+    - service: switch.turn_on
+      data:
+       entity_id: switch.tv       
+

@@ -1,0 +1,84 @@
+ - name: Romantic
+   entities:
+    group.lights:
+       state: off
+       transition: 8
+    switch.candles:
+       state: on   
+    light.wall:
+       state: on
+       brightness: 80
+       transition: 8
+       color: 255,113,24 
+
+ - name: warm
+   entities:
+    group.lights:
+       state: off
+       transition: 8
+    switch.candles:
+       state: on   
+    light.wall:
+       state: on
+       brightness: 80
+       transition: 8
+       rgb_color:
+       - 255
+       - 113
+       - 24
+    light.bridge_light:
+       state: on
+       brightness: 80
+       transition: 8
+       rgb_color:
+       - 255
+       - 113
+       - 24
+
+ - name: Bedtime
+   entities:
+    group.lights:
+       state: off
+       transition: 180
+
+ - name: Lights Low
+   entities:
+    group.lights:
+       state: on
+       brightness: 10
+       transition: 3
+
+ - name: Movie
+   entities:
+    group.lights:
+       state: on
+       brightness: 80
+       transition: 3
+         
+ - name: Lights Normal
+   entities:
+    group.lights:
+       state: on
+       brightness: 200
+       transition: 3
+
+ - name: Lights Full
+   entities:
+    group.lights:
+       state: on
+       brightness: 255
+       transition: 3           
+
+ - name: Morning
+   entities:
+    group.lights:
+       state: on
+       brightness: 180
+       transition: 1800
+
+ - name: Wakeup
+   entities:
+    group.lights:
+       state: on 
+       brightness: 1
+       transition: 5

@@ -1,0 +1,19 @@
+#tv: ssh pi@192.168.1.140 'irsend send_once TV key_power'
+#amplifier: ssh pi@192.168.1.140 'irsend send_once AMP key_power'
+fanon: 'python3 /home/pi/.homeassistant/socket1on.py'
+fanoff: 'python3 /home/pi/.homeassistant/socket1off.py'
+bedlightson: 'python3 /home/pi/.homeassistant/socket2on.py'
+bedlightsoff: 'python3 /home/pi/.homeassistant/socket2off.py'
+microon: 'python3 /home/pi/.homeassistant/socket3on.py'
+microoff: 'python3 /home/pi/.homeassistant/socket3off.py'
+#caselightson: 'python3 /home/pi/.homeassistant/caselights.py'
+#caselightsoff: 'python3 /home/pi/.homeassistant/caseoff.py'
+restarthass: sudo systemctl restart home-assistant.service &
+reboot: sudo reboot
+update: sudo pip3 install --upgrade homeassistant &
+hadashboard: cd /home/pi/hadashboard && dashing start &
+hapush: cd /home/pi/hadashboard/hapush/ && ./hapush.py hapush.cfg &
+updatepi: sudo apt-get update && sudo apt-get dist-upgrade -y &
+backuppi: sudo dd bs=1M if=/dev/mmcblk0 of=/mnt/backup/pibackup/backup.img &
+warningshot: ssh pi@192.168.1.140 'python warningshot.py'
+burstfire: ssh pi@192.168.1.140 'python burstfire.py'

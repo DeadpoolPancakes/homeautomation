@@ -1,0 +1,299 @@
+ - alias: Turn on light when sun sets
+   trigger:
+     - platform: sun
+       event: sunset
+       offset: "-01:00:00"
+   condition:
+     - condition: state
+       entity_id: group.jamie
+       state: 'home'
+   action:
+     - service: light.turn_on
+       entity_id: group.lights
+
+ - alias: Getting Home
+   trigger:
+     - platform: state
+       entity_id: group.jamie
+       from: 'not_home'
+       to: 'home'
+   condition:
+     - condition: sun
+       after: sunset
+   action:
+     - service: light.turn_on
+       entity_id: group.lights 
+
+ - alias: Arriving Home
+   trigger:
+     - platform: state
+       entity_id: group.jamie
+       to: 'home'
+   action:
+     - service: script.turn_on
+       entity_id: script.notifyhome
+
+ - alias: Getting to work
+   trigger:
+     - platform: state
+       entity_id: device_tracker.oneplus_oneplus2
+       to: 'Work'
+   condition:
+     - condition: time
+       before: "9:00:00"   
+   action:
+     - service: script.turn_on
+       entity_id: script.notifywork       
+
+ - alias: Media when getting home
+   trigger:
+     - platform: state
+       entity_id: group.jamie
+       from: 'not_home'
+       to: 'home'
+   condition:
+     - condition: time
+       before: '23:00'
+   action:
+     - service: script.turn_on
+       entity_id: script.ambience                     
+       
+ - alias: Dim lights when playing media
+   trigger: 
+     - platform: state
+       entity_id: media_player.natasha
+       to: 'playing'
+   condition:
+     - condition: state
+       entity_id: group.lights
+       state: 'on'
+   action:
+     - service: scene.turn_on
+       entity_id: scene.movie
+
+ - alias: Dim lights when playing firetv
+   trigger: 
+     - platform: state
+       entity_id: media_player.aftt
+       to: 'playing'
+   condition:
+     - condition: state
+       entity_id: group.lights
+       state: 'on'
+   action:
+     - service: scene.turn_on
+       entity_id: scene.movie
+
+ - alias: Normalise lights when firetv stops
+   trigger: 
+     - platform: state
+       entity_id: media_player.aftt
+       from: 'playing'
+   condition:
+     - condition: state
+       entity_id: group.lights
+       state: 'on'
+   action:
+     - service: scene.turn_on
+       entity_id: scene.lights_normal
+
+ - alias: Normalise lights when media stops
+   trigger: 
+     - platform: state
+       entity_id: media_player.natasha
+       from: 'playing'
+   condition:
+     - condition: state
+       entity_id: group.lights
+       state: 'on'
+   action:
+     - service: scene.turn_on
+       entity_id: scene.lights_normal
+
+ - alias: Lights off when I leave
+   trigger:
+     - platform: state
+       entity_id: group.jamie
+       from: 'home'
+   action:
+     - service: light.turn_off
+       entity_id: group.lights
+
+ - alias: Lights on in Morning weekday
+   trigger:
+     - platform: time
+       after: "05:30"
+   condition:
+     - condition: time
+       weekday:
+         - mon
+         - tue
+         - wed
+         - thu
+         - fri
+     - condition: state
+       entity_id: device_tracker.oneplus_oneplus2
+       state: 'home'
+   action:
+     - service: script.turn_on
+       entity_id: script.wakeup
+     - service: script.turn_on
+       entity_id: script.ambience
+
+ - alias: Lights on in Morning weekend
+   trigger:
+     - platform: time
+       after: "06:00"
+   condition:
+     - condition: time
+       weekday:
+         - sat
+         - sun
+     - condition: state
+       entity_id: device_tracker.oneplus_oneplus2
+       state: 'home'      
+   action:
+     - service: script.turn_on
+       entity_id: script.wakeup
+     - service: script.turn_on
+       entity_id: script.ambience              
+
+ - alias: Cosy scene
+   trigger:
+     - platform: state
+       entity_id: input_select.scenes_preset
+       to: Cosy
+   action:
+     - service: script.turn_on
+       entity_id: script.cosy
+
+ - alias: Heavy cpu use
+   trigger:
+     - platform: state
+       entity_id: sensor.cpu_use
+       to: "60"
+   action:
+     - service: script.turn_on
+       entity_id: script.heavy_cpu_use 
+
+ - alias: welcome home fireplace clicked
+   trigger:
+     platform: event
+     event_type: html5_notification.clicked
+     event_data:
+      action: Fireplace   
+   action:
+     - service: script.turn_on
+       entity_id: script.fireplace
+
+ - alias: welcome home lights clicked
+   trigger:
+     platform: event
+     event_type: html5_notification.clicked
+     event_data:
+      action: lights_on   
+   action:
+     - service: light.turn_on
+       entity_id: group.lights
+
+ - alias: HA Startup
+   trigger:
+     platform: homeassistant
+     event: start
+   action:
+     - service: script.turn_on
+       entity_id: script.startup   
+
+ - alias: startup message
+   trigger:
+     platform: homeassistant
+     event: start
+   condition:
+     - condition: state
+       entity_id: device_tracker.oneplus_oneplus2
+       state: 'home'     
+   action:
+     - service: script.turn_on
+       entity_id: script.startupgreeting  
+
+ - alias: Update Available
+   trigger:
+     - platform: state
+       entity_id: updater.updater
+   action:
+     - service: script.turn_on
+       entity_id: script.updateavailable
+   
+
+ - alias: Sif Battery low
+   trigger:
+     - platform: numeric_state
+       entity_id: sensor.sif_battery
+       below: 25
+   action:
+     - service: script.turn_on
+       entity_id: script.sifbatterylow      
+ 
+ - alias: N7 Battery low
+   trigger:
+     - platform: numeric_state
+       entity_id: sensor.nexus_7_battery
+       below: 25
+   action:
+     - service: script.turn_on
+       entity_id: script.n7batterylow 
+
+ - alias: HomeHub Battery low
+   trigger:
+     - platform: numeric_state
+       entity_id: sensor.home_hub_battery
+       below: 10
+   action:
+     - service: script.turn_on
+       entity_id: script.homehubbatterylow 
+
+ - alias: Shield Battery low
+   trigger:
+     - platform: numeric_state
+       entity_id: sensor.shield_battery
+       below: 25
+   action:
+     - service: script.turn_on
+       entity_id: script.shieldbatterylow 
+
+ - alias: Print Started
+   trigger:
+     - platform: state
+       entity_id: binary_sensor.octoprint_printing
+       from: 'off'
+       to: 'on'   
+   action:
+     - service: script.turn_on
+       entity_id: script.3dprinterstart       
+
+ - alias: Print at 50%
+   trigger:
+     - platform: state
+       entity_id: sensor.octoprint_job_percentage
+       to: '50'   
+   action:
+     - service: script.turn_on
+       entity_id: script.3dprinterfifty  
+
+ - alias: Print Finished
+   trigger:
+     - platform: state
+       entity_id: sensor.octoprint_job_percentage
+       to: '100'   
+   action:
+     - service: script.turn_on
+       entity_id: script.3dprinterend        
+
+ - alias: Lunch List
+   trigger:
+     - platform: state
+       entity_id: device_tracker.oneplus_oneplus2
+       to: 'Sainsburys'
+   action:
+     - service: script.turn_on
+       entity_id: script.lunchtimelist       

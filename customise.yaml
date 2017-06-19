@@ -1,0 +1,147 @@
+light.lightbulb_01:
+  emulated_hue_name: "Desk Lamp"
+  friendly_name: Desk Lamp 
+  icon: mdi:lamp
+
+light.lightbulb_02:
+  emulated_hue_name: "Bed Lamp"
+  friendly_name: Bed Lamp 
+  icon: mdi:lamp
+
+camera.bedroom_door:
+  friendly_name: Bedroom Door
+  icon: mdi:glassdoor
+
+camera.garden:
+  friendly_name: Outside
+  icon: mdi:weather-sunny
+
+camera.pi_cam:
+  friendly_name: Bed camera
+  icon: mdi:hotel
+
+script.tv:
+   friendly_name: tv
+   icon: mdi:television
+
+script.fireplace:
+   friendly_name: fireplace
+   icon: mdi:fire  
+
+script.amp:
+   friendly_name: Amplifier
+   icon: mdi:amplifier
+
+script.reboot:
+   friendly_name: reboot pi 
+   icon: mdi:raspberrypi
+
+script.update:
+   friendly_name: Update HA 
+   icon: mdi:update   
+
+switch.desktop:
+   friendly_name: desktop
+   icon: mdi:desktop-tower
+
+device_tracker.oneplus_oneplus2:
+   friendly_name: Jamie
+   icon: mdi:drupal
+
+sensor.travel_time_to_Work:
+   friendly_name: Drive to work
+   icon: mdi:keyboard
+
+sensor.travel_time_to_home:
+   friendly_name: Drive to home
+   icon: mdi:home-modern
+
+sensor.speedtest_download: 
+   friendly_name: download speed
+   icon: mdi:cloud-download
+
+sensor.speedtest_ping:
+   friendly_name: Ping speed
+   icon: mdi:clock-fast
+
+sensor.speedtest_upload:
+   friendly_name: Upload speed
+   icon: mdi:cloud-upload
+
+sensor.case_humidity:
+   friendly_name: Case Humidity
+   icon: mdi:water-percent   
+
+sensor.broadlink_sensor_temperature:
+   friendly_name: Room Temp
+   icon: mdi:oil-temperature
+
+switch.display_lights:
+   friendly_name: Display Lights
+   icon: mdi:white-balance-iridescent
+
+switch.fan:
+   friendly_name: Fan
+   icon: mdi:fan
+
+switch.bed_lights:
+   friendly_name: Bed Lights
+   icon: mdi:hotel
+
+switch.subwoofer:
+   friendly_name: Subwoofer
+   icon: mdi:surround-sound
+
+switch.3d_printer:
+   friendly_name: M3D Micro
+   icon: mdi:printer-3d
+
+switch.input_chromecast:
+   friendly_name: Chromecast
+   icon: mdi:google-chrome
+
+switch.input_playstation:
+   friendly_name: Playstation
+   icon: mdi:playstation
+
+switch.input_xbox:
+   friendly_name: Xbox 360
+   icon: mdi:xbox
+
+switch.input_fire_Tv:
+   friendly_name: Fire Tv
+   icon: mdi:amazon
+
+script.firetv:
+   friendly_name: Fire tv
+   icon: mdi:amazon
+
+script.xbox:
+   friendly_name: Xbox
+   icon: mdi:xbox
+
+script.chromecast:
+   friendly_name: Chromecast
+   icon: mdi:google-chrome
+
+script.playstation3:
+   friendly_name: Playstation
+   icon: mdi:playstation
+
+sensor.resting_heart_rate:
+   friendly_name: Hear Rate
+   icon: mdi:heart-pulse
+
+sensor.phone_battery:
+   friendly_name: Op2 Battery
+   icon: mdi:battery      
+
+sensor.sleep_efficiency:
+   friendly_name: Sleep
+   icon: mdi:sleep
+
+group.all_automations:
+    hidden: false
+
+group.all_scripts:
+    hidden: false 

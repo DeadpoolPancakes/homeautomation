@@ -1,0 +1,257 @@
+#  default_view:
+#    view: yes
+#    entities:
+#      - group.lights
+#      - group.computers
+#      - group.climate
+#      - group.computers
+#      - group.people
+#      - group.weather
+#      - group.scene
+#      - group.media
+#      - camera.Garden
+
+  home:
+    name: Home
+    view: yes
+    entities:
+      - group.lights
+      - group.computers
+      - group.climate  
+      - group.system
+      - group.security
+      - group.jamie
+
+  weather:
+    name: Weather
+    entities:
+#      - sensor.dark_sky_apparent_temperature
+      - sensor.dark_sky_cloud_coverage
+#      - sensor.dark_sky_daily_high_apparent_temperature
+      - sensor.dark_sky_daily_high_temperature
+#      - sensor.dark_sky_daily_low_apparent_temperature
+      - sensor.dark_sky_daily_low_temperature
+      - sensor.dark_sky_daily_max_precip_intensity
+      - sensor.dark_sky_daily_summary
+#      - sensor.dark_sky_dew_point
+      - sensor.dark_sky_hourly_summary
+      - sensor.dark_sky_humidity
+      - sensor.dark_sky_icon
+#      - sensor.dark_sky_minutely_summary
+      - sensor.dark_sky_nearest_storm_bearing
+      - sensor.dark_sky_nearest_storm_distance
+#      - sensor.dark_sky_ozone
+      - sensor.dark_sky_precip
+      - sensor.dark_sky_precip_intensity
+      - sensor.dark_sky_precip_probability
+      - sensor.dark_sky_pressure
+      - sensor.dark_sky_summary
+      - sensor.dark_sky_temperature
+      - sensor.dark_sky_visibility
+      - sensor.dark_sky_wind_bearing
+      - sensor.dark_sky_wind_speed
+
+  automation:
+    name: Automations
+    view: yes
+    entities:
+      - group.all_automations
+      
+  climate:
+    name: Climate
+    entities:
+      - sun.sun
+      - sensor.moon
+      - sensor.broadlink_sensor_temperature
+      - sensor.temp_stats_mean
+      - sensor.dark_sky_icon
+      - sensor.dark_sky_daily_summary
+      - binary_sensor.iss
+
+  computers:
+    name: Computers
+    entities:
+      - switch.friday
+      - switch.jocosta
+  
+  tablets:
+    name: Tablets
+    entities:
+      - sensor.nexus_7_battery
+      - sensor.home_hub_battery
+      - sensor.shield_battery
+ 
+  lights:
+    name: lights
+    entities: 
+      - light.lightbulb_01
+      - light.lightbulb_02
+
+  alllights:
+    name: all lights
+    entities: 
+      - light.lightbulb_01
+      - light.lightbulb_02
+      - light.wall
+      - light.bridge_light
+
+  people:
+    name: People
+    entities:
+      - device_tracker.oneplus_oneplus2
+              
+  bedroom:
+    name: bedroom
+    view: yes
+    entities:
+      - group.lights
+      - group.people
+      - switch.orvibo_s20_switch
+      - media_player.natasha
+      - switch.desktop
+      - group.climate
+      - camera.door
+
+  media:
+    name: Media
+    view: yes
+    entities:
+      - media_player.bedroom
+      - media_player.lounge
+      - media_player.natasha
+
+  scene:
+    name: Scenes
+    view: yes
+    entities:
+      - group.scene
+
+  security:
+    name: security
+    view: yes
+    entities:
+      - camera.garden
+      - camera.outside
+      - camera.printer
+      - camera.door
+      - camera.entrance
+
+  cameras:
+    name: Cameras
+    entities:
+      - camera.garden
+      - camera.outside
+      - camera.printer
+      - camera.door
+      - camera.entrance
+
+  system:
+    name: System
+    entities:
+      - sensor.cpu_use
+      - sensor.cpu_stats_mean
+      - sensor.download_stats_mean
+      - sensor.speedtest_download
+      - sensor.speedtest_upload
+      - sensor.speedtest_ping
+      - sensor.ram_free
+      - sensor.case_temperature
+      - sensor.case_humidity      
+      - sensor.lucy
+      - sensor.jocosta
+      - sensor.pihole
+      - sensor.pihole_ads_blocked_today
+      - sensor.pihole_ads_percentage_blocked_today
+      - sensor.pihole_dns_queries_today
+      - sensor.connected_clients
+
+  homehub:
+    name: HomeHub
+    entities:
+      - switch.entrance_exposure_lock
+      - switch.entrance_focus
+      - switch.entrance_frontfacing_camera
+      - switch.entrance_gps_active
+      - switch.entrance_night_vision
+      - switch.entrance_overlay
+      - switch.entrance_torch
+      - switch.entrance_video_recording
+      - switch.entrance_white_balance_lock
+      - sensor.entrance_audio_connections
+      - sensor.entrance_video_connections
+
+  printer:
+    name: M3D Micro
+    entities:
+      - sensor.octoprint_current_state
+      - sensor.octoprint_job_percentage
+      - sensor.octoprint_actual_tool0_temp
+      - sensor.octoprint_target_tool0_temp
+      - binary_sensor.octoprint_printing
+      - binary_sensor.octoprint_printing_error
+
+ 
+  3dprinter:
+    name: 3D Printer
+    view: yes
+    entities:
+      - group.printer
+      - camera.printer
+      - switch.3d_printer
+      - switch.3d_printer_blue
+      - switch.3d_printer_green
+      - switch.3d_printer_red
+      - switch.3d_printer_white
+      - switch.3dprinterlights
+
+
+  fitbit:
+    name: Fitness
+    entities:
+      - sensor.floors
+      - sensor.sleep_minutesasleep
+      - sensor.sleep_efficiency
+      - sensor.steps
+      - sensor.distance
+      - sensor.heart
+
+  traveltimes:
+    name: Travel Times
+    entities:
+      - sensor.travel_time_to_home
+      - sensor.travel_time_to_work
+
+  jamie:
+    name: jamie
+    entities:
+      - device_tracker.oneplus_oneplus2
+      - sensor.sif_battery
+      - sensor.sleep_timeinbed
+      - sensor.steps
+      - sensor.distance
+      - sensor.resting_heart_rate
+
+  switches:
+    name: switches
+    entities:
+      - switch.3d_printer
+      - switch.3d_printer_blue
+      - switch.3d_printer_green
+      - switch.3d_printer_red
+      - switch.3d_printer_white
+      - switch.3dprinterlights
+      - switch.bed_lights
+      - switch.candles
+      - switch.case_lights
+      - switch.fan
+      - switch.display_lights
+      - switch.subwoofer
+      - switch.amp
+      - switch.tv
+      - switch.bed_fans
+
+  fans:
+    name: All Fans
+    entities:
+      - switch.bed_fans
+      - switch.fan          
