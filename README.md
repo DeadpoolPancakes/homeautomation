@@ -1,5 +1,5 @@
 # Home Automation Project (Jarvis)
-home automation project using <a href="https://github.com/home-assistant/home-assistant">Homeassistant</a>
+home automation project using <a href="https://github.com/home-assistant/home-assistant">Homeassistant</a> at its core
 
 <hr/>
 
